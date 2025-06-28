@@ -3,7 +3,7 @@
 A simple tool to search for VEX teams — and soon, their matches — using the
 [RobotEvents API](https://www.robotevents.com/).
 
-**Demo:** [https://demolinkhere.com](https://demolinkhere.com)
+**Demo:** [https://demolinkhere.com](https://vextools.vercel.app/)
 
 ---
 

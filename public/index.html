@@ -15,6 +15,9 @@
       html {
         scroll-behavior: smooth;
       }
+      body {
+        overflow-x: hidden;
+      }
       ::-webkit-scrollbar {
         width: 12px;
       }
@@ -48,13 +51,13 @@
     </script>
   </head>
   <body class="bg-vex text-slate-200 font-inter min-h-screen">
-    <div class="min-h-screen flex flex-col items-center justify-center p-8 space-y-12">
+    <div class="p-8 space-y-12 max-w-7xl mx-auto">
       <div class="text-center">
         <h1 class="text-6xl md:text-8xl lg:text-9xl font-jua text-slate-200 mb-8 tracking-wide">
           VexTools
         </h1>
       </div>
-      <div class="w-full max-w-4xl">
+      <div class="w-full max-w-4xl mx-auto">
         <div class="relative">
           <input
             type="text"
@@ -78,7 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full max-w-6xl">
+      <div class="w-full max-w-6xl mx-auto">
         <div class="flex flex-wrap justify-center gap-4 md:gap-6">
           <button
             class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -92,25 +95,6 @@
               </svg>
             </div>
             <span class="btn-label text-white font-medium text-lg">VexIQ</span>
-          </button>
-
-          <button
-            class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            data-competition="vexgo"
-          >
-            <div
-              class="icon-container w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center transition-opacity duration-200 opacity-0 group-hover:opacity-100"
-            >
-              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                />
-              </svg>
-            </div>
-            <span
-              class="btn-label text-white/70 group-hover:text-white font-medium text-lg transition-colors duration-200"
-              >VEX GO</span
-            >
           </button>
 
           <button
@@ -170,7 +154,7 @@
       </div>
       <div
         id="teams"
-        class="w-full max-w-6xl mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        class="w-full max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       ></div>
     </div>
     <script>
@@ -213,6 +197,7 @@
           button.addEventListener('click', () => {
             const selected = button.classList.contains('bg-indigo-500');
             if (selected) {
+              showteam();
               unselectButton();
             } else {
               selectButton(button);
