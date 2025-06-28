@@ -1,15 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VexTools</title>
-  <meta name="description" content="VexTools - A powerful tool to check info about team & events." />
-  <meta name="keywords" content="VexTools, VEX Robotics, team info, event info, robotics tools, team lookup, event lookup" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#232136]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VexTools</title>
+    <meta disc="VexTools - A tool for VEX Robotics teams to find info about teams." />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/js/index.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e293b;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #475569;
+        border-radius: 10px;
+        border: 3px solid #1e293b;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #64748b;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+              jua: ['Jua', 'cursive'],
+            },
+            backgroundImage: {
+              vex: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-vex text-slate-200 font-inter min-h-screen">
+    <div class="min-h-screen flex flex-col items-center justify-center p-8 space-y-12">
+      <div class="text-center">
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-jua text-slate-200 mb-8 tracking-wide">
+          VexTools
+        </h1>
+      </div>
+      <div class="w-full max-w-4xl">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search a team..."
+            class="w-full px-6 py-4 bg-white/5 border border-slate-600 rounded-full text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 text-lg"
+          />
+          <div class="absolute right-6 top-1/2 transform -translate-y-1/2">
+            <svg
+              class="w-5 h-5 text-slate-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="w-full max-w-6xl">
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+          <button
+            class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            data-competition="vexiq"
+          >
+            <div
+              class="icon-container w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center transition-opacity duration-200"
+            >
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
+              </svg>
+            </div>
+            <span class="btn-label text-white font-medium text-lg">VexIQ</span>
+          </button>
 
-</body>
+          <button
+            class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            data-competition="vexgo"
+          >
+            <div
+              class="icon-container w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+            >
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+            </div>
+            <span
+              class="btn-label text-white/70 group-hover:text-white font-medium text-lg transition-colors duration-200"
+              >VEX GO</span
+            >
+          </button>
+
+          <button
+            class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            data-competition="vexv5"
+          >
+            <div
+              class="icon-container w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+            >
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <span
+              class="btn-label text-white/70 group-hover:text-white font-medium text-lg transition-colors duration-200"
+              >VEXV5</span
+            >
+          </button>
+
+          <button
+            class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            data-competition="vexai"
+          >
+            <div
+              class="icon-container w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+            >
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span
+              class="btn-label text-white/70 group-hover:text-white font-medium text-lg transition-colors duration-200"
+              >VEXAI</span
+            >
+          </button>
+
+          <button
+            class="competition-btn group px-8 py-4 rounded-3xl flex items-center gap-4 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            data-competition="vexu"
+          >
+            <div
+              class="icon-container w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+            >
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path
+                  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                />
+              </svg>
+            </div>
+            <span
+              class="btn-label text-white/70 group-hover:text-white font-medium text-lg transition-colors duration-200"
+              >VEXU</span
+            >
+          </button>
+        </div>
+      </div>
+      <div
+        id="teams"
+        class="w-full max-w-6xl mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      ></div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.competition-btn');
+
+        function unselectButton() {
+          buttons.forEach((btn) => {
+            btn.classList.remove('bg-indigo-500', 'hover:bg-indigo-600');
+            btn.classList.add('bg-slate-700', 'hover:bg-slate-600');
+            btn.querySelector('.btn-label').classList.add('text-white/70');
+            btn.querySelector('.btn-label').classList.remove('text-white');
+            btn.querySelector('.icon-container').classList.remove('opacity-100');
+            btn.querySelector('.icon-container').classList.add('opacity-0');
+          });
+          localStorage.removeItem('comp');
+        }
+
+        function selectButton(target) {
+          unselectButton();
+          target.classList.add('bg-indigo-500', 'hover:bg-indigo-600');
+          target.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+          target.querySelector('.btn-label').classList.remove('text-white/70');
+          target.querySelector('.btn-label').classList.add('text-white');
+          target.querySelector('.icon-container').classList.remove('opacity-0');
+          target.querySelector('.icon-container').classList.add('opacity-100');
+          localStorage.setItem('comp', target.dataset.competition);
+          showteam(null, target.dataset.competition);
+        }
+
+        const saved = localStorage.getItem('comp');
+        if (saved) {
+          const savedBtn = [...buttons].find((btn) => btn.dataset.competition === saved);
+          if (savedBtn) selectButton(savedBtn);
+        } else {
+          unselectButton();
+        }
+
+        buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const selected = button.classList.contains('bg-indigo-500');
+            if (selected) {
+              unselectButton();
+            } else {
+              selectButton(button);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
