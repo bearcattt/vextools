@@ -40,7 +40,7 @@ fastify.get('/api/teams', async (request, reply) => {
   }
 
   const baseUrl = `https://www.robotevents.com/api/v2/teams?per_page=100&registered=true&${params.toString()}`;
-  console.log('base url', baseUrl);
+  // dev stuf console.log('base url', baseUrl);
   try {
     const teams = await getTeams(token, baseUrl);
     return { data: teams };

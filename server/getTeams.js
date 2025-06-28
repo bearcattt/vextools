@@ -9,14 +9,13 @@ export async function getTeams(token, baseUrl) {
 
   const pagesToFetch = [1, 2, 3];
 
-  const promises = pagesToFetch.map((page) => {
+  const promises = pagesToFetch.map(async (page) => {
     const url = `${baseUrl}&page=${page}`;
-    return fetch(url, { headers }).then((res) => {
-      if (!res.ok) {
-        throw new Error(`Failed to fetch page ${page}: ${res.status} ${res.statusText}`);
-      }
-      return res.json();
-    });
+    const res = await fetch(url, { headers });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch page ${page}: ${res.status} ${res.statusText}`);
+    }
+    return await res.json();
   });
 
   const results = await Promise.all(promises);
